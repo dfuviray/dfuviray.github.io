@@ -17,6 +17,7 @@
   --margin-9: 4.5rem;
   --margin-10: 5rem;
 }
+
 *,
 *::before,
 *::after {
@@ -30,14 +31,26 @@ html {
 }
 
 body {
-  background-image: url("img/background.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
   font-family: "Lato", Arial, Helvetica, sans-serif;
   line-height: 1.5;
   color: var(--black-1);
   font-weight: 300;
+  overflow: hidden;
+}
+
+body::before {
+  animation: scale-down 2s 0.5s cubic-bezier(0, 0.5, 0, 1) forwards;
+  background-image: url("img/background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -215,5 +228,14 @@ hr {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes scale-down {
+  0% {
+    transform: scale(2.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
